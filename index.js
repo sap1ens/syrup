@@ -3,7 +3,8 @@ import GitHubApi from 'github';
 
 const possibleStoryPoints = [1, 2, 3, 4, 5];
 const user = 'BenchLabs';
-const repo = 'platform';
+const teamLabel = 'team_platform';
+const sprintLabelKeywords = 'Platform Sprint';
 
 const github = new GitHubApi({
     // required
@@ -24,28 +25,17 @@ github.authenticate({
     token: '32386291769872a18c145e04f6c2746f112e527b'
 });
 
-function fetchMilestones() {
-    return new Promise((resolve, reject) => {
-        github.issues.getAllMilestones({
-            user: user,
-            repo: repo
-        }, (err, data) => {
-            if(err) {
-                reject(err);
-            } else {
-                resolve(data);
-            }
-        });
-    });
-}
+function searchIssues(page = 1) {
+    const query = `user:${user}+label:${teamLabel}`;
 
-function fetchIssuesByMiltestone(milestoneId) {
+    console.log(`Using search query: "${query}", fetching page ${page}`);
+
     return new Promise((resolve, reject) => {
-        github.issues.repoIssues({
-            user: user,
-            repo: repo,
-            state: 'all',
-            milestone: milestoneId
+        github.search.issues({
+            q: query,
+            sort: 'created',
+            per_page: 100,
+            page: page
         }, (err, data) => {
             if (err) {
                 reject(err);
@@ -56,8 +46,8 @@ function fetchIssuesByMiltestone(milestoneId) {
     });
 }
 
-function printMilestone(title, issues) {
-    console.log(`Milestone: ${title}`);
+function printSprint(title, issues) {
+    console.log(title);
 
     var totalStoryPoints = 0;
 
@@ -76,15 +66,45 @@ function printMilestone(title, issues) {
     console.log(`Total points: ${totalStoryPoints}\n`);
 }
 
-fetchMilestones().then((milestones) => {
-    const milestonesIssuesAsPromises = _.map(milestones, (milestone) => {
-        return fetchIssuesByMiltestone(milestone.number);
-    });
+function fetchAllIssues(initialData = [], totalCount, startFrom = 2) {
+    return new Promise((resolve, reject) => {
+        var allIssuesWithLabel = initialData;
 
-    Promise.all(milestonesIssuesAsPromises).then((milestonesIssues) => {
-        _.each(milestonesIssues, (milestoneIssues, i) => {
-            printMilestone(milestones[i].title, milestoneIssues);
+        function fetchAll(page) {
+            if(allIssuesWithLabel.length < totalCount) {
+                searchIssues(page).then((moreData) => {
+                    allIssuesWithLabel = _.union(allIssuesWithLabel, moreData.items);
+                    fetchAll(page + 1);
+                });
+            } else {
+                resolve(allIssuesWithLabel);
+            }
+        }
+
+        fetchAll(startFrom);
+    });
+}
+
+
+searchIssues().then((issuesData) => {
+    fetchAllIssues(issuesData.items, issuesData.total_count).then((allIssuesWithTeamLabel) => {
+        console.log(`Found ${allIssuesWithTeamLabel.length} issues with ${teamLabel} label`);
+
+        const allIssuesWithSprintsLabels = _.groupBy(allIssuesWithTeamLabel, (issue) => {
+            const sprintLabel = _.find(issue.labels, (label) => {
+                return label.name.indexOf(sprintLabelKeywords) != -1;
+            });
+
+            return sprintLabel && sprintLabel.name;
         });
-    });
-});
 
+        delete allIssuesWithSprintsLabels['undefined'];
+
+        console.log('\n');
+        _.each(allIssuesWithSprintsLabels, (sprintIssues, sprintName) => {
+            printSprint(sprintName, sprintIssues);
+        });
+
+    });
+
+});
