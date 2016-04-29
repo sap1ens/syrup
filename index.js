@@ -59,8 +59,13 @@ function printSprint(title, issues) {
         })[0];
 
         totalStoryPoints += storyPoints || 0;
+        
+        var assignedTo = 'unassigned';
+        if(issue.assignee) {
+            assignedTo = 'assigned to ' + issue.assignee.login;
+        }
 
-        console.log(`Story name: ${issue.title}, points: ${storyPoints}`);
+        console.log(`Story name: ${issue.title}, points: ${storyPoints}, ${assignedTo}`);
     });
 
     console.log(`Total points: ${totalStoryPoints}\n`);
