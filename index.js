@@ -47,6 +47,10 @@ function searchIssues(page = 1) {
     });
 }
 
+function isBug(issue) {
+    return _.find(issue.labels, (label) => label.name == 'bug')
+}
+
 function printSprint(title, issues) {
     console.log(title);
 
@@ -66,7 +70,11 @@ function printSprint(title, issues) {
 
         totalStoryPoints += storyPoints || 0;
 
-        table.push([issue.title, storyPoints || '', issue.assignee && issue.assignee.login || '', issue.state]);
+        table.push([
+            issue.title,
+            storyPoints || (isBug(issue) ? 'bug' : ''),
+            issue.assignee && issue.assignee.login || '',
+            issue.state]);
     });
 
     console.log(table.toString());
