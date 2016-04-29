@@ -51,8 +51,8 @@ function printSprint(title, issues) {
     console.log(title);
 
     const table = new Table({
-        head: ['Name', 'Points', 'Assigned to'],
-        colWidths: [100, 10, 25]
+        head: ['Name', 'Points', 'Assigned to', 'Status'],
+        colWidths: [100, 10, 25, 10]
     });
 
     var totalStoryPoints = 0;
@@ -66,7 +66,7 @@ function printSprint(title, issues) {
 
         totalStoryPoints += storyPoints || 0;
 
-        table.push([issue.title, storyPoints || '', issue.assignee && issue.assignee.login || '']);
+        table.push([issue.title, storyPoints || '', issue.assignee && issue.assignee.login || '', issue.state]);
     });
 
     console.log(table.toString());
