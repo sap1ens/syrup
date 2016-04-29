@@ -51,12 +51,17 @@ function isBug(issue) {
     return _.find(issue.labels, (label) => label.name == 'bug')
 }
 
+// TODO: improve, kinda hacky now
+function extractRepoNameFromURL(url) {
+    return url.replace('https://api.github.com/repos/BenchLabs/', '');
+}
+
 function printSprint(title, issues) {
     console.log(title);
 
     const table = new Table({
-        head: ['Name', 'Points', 'Assigned to', 'Status'],
-        colWidths: [100, 10, 25, 10]
+        head: ['ID', 'Repo', 'Name', 'Points', 'Assigned to', 'Status'],
+        colWidths: [10, 15, 100, 10, 25, 10]
     });
 
     var totalStoryPoints = 0;
@@ -71,6 +76,8 @@ function printSprint(title, issues) {
         totalStoryPoints += storyPoints || 0;
 
         table.push([
+            issue.number,
+            extractRepoNameFromURL(issue.repository_url),
             issue.title,
             storyPoints || (isBug(issue) ? 'bug' : ''),
             issue.assignee && issue.assignee.login || '',
