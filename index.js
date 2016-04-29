@@ -1,5 +1,6 @@
 import _ from 'underscore';
 import GitHubApi from 'github';
+import Table from 'cli-table';
 
 const possibleStoryPoints = [1, 2, 3, 4, 5];
 const user = 'BenchLabs';
@@ -49,6 +50,11 @@ function searchIssues(page = 1) {
 function printSprint(title, issues) {
     console.log(title);
 
+    const table = new Table({
+        head: ['Name', 'Points', 'Assigned to'],
+        colWidths: [100, 10, 25]
+    });
+
     var totalStoryPoints = 0;
 
     _.each(issues, (issue) => {
@@ -59,14 +65,11 @@ function printSprint(title, issues) {
         })[0];
 
         totalStoryPoints += storyPoints || 0;
-        
-        var assignedTo = 'unassigned';
-        if(issue.assignee) {
-            assignedTo = 'assigned to ' + issue.assignee.login;
-        }
 
-        console.log(`Story name: ${issue.title}, points: ${storyPoints}, ${assignedTo}`);
+        table.push([issue.title, storyPoints || '', issue.assignee && issue.assignee.login || '']);
     });
+
+    console.log(table.toString());
 
     console.log(`Total points: ${totalStoryPoints}\n`);
 }
