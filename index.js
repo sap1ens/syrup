@@ -75,10 +75,11 @@ function printSprint(title, issues) {
 
     const table = new Table({
         head: ['ID', 'Repo', 'Name', 'Points', 'Assigned to', 'Status'],
-        colWidths: [10, 15, 100, 10, 25, 10]
+        colWidths: [10, 20, 100, 10, 25, 10]
     });
 
     var totalStoryPoints = 0;
+    var assignees = new Set();
 
     _.each(issues, (issue) => {
         const storyPoints = _.filter(_.compact(_.map(issue.labels, (label) => {
@@ -89,18 +90,23 @@ function printSprint(title, issues) {
 
         totalStoryPoints += storyPoints || 0;
 
+        const assignee = issue.assignee && issue.assignee.login;
+        if(assignee) assignees.add(assignee);
+
         table.push([
             issue.number,
             extractRepoNameFromURL(issue.repository_url),
             issue.title,
             storyPoints || (isBug(issue) ? 'bug' : ''),
-            issue.assignee && issue.assignee.login || '',
+            assignee || '',
             issue.state]);
     });
 
     console.log(table.toString());
 
-    console.log(`Total points: ${totalStoryPoints}\n`);
+    console.log(`Total points: ${totalStoryPoints}`);
+    console.log(`Total number of assignees: ${assignees.size}`);
+    console.log(`Points per assignee: ${Math.round(totalStoryPoints / assignees.size)}\n`);
 }
 
 function fetchAllIssues(initialData = [], totalCount, startFrom = 2) {
