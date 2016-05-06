@@ -1,11 +1,15 @@
 import _ from 'underscore';
 import GitHubApi from 'github';
 import Table from 'cli-table';
+import nconf from 'nconf';
+
+nconf.env().argv();
+nconf.file('config.json');
 
 const possibleStoryPoints = [1, 2, 3, 4, 5];
-const user = 'BenchLabs';
-const teamLabel = 'team_platform';
-const sprintLabelKeywords = 'Platform Sprint';
+const user = nconf.get('project:user');
+const teamLabel = nconf.get('project:teamLabel');
+const sprintLabelKeywords = nconf.get('project:sprintKeywords');
 
 const github = new GitHubApi({
     // required
@@ -23,7 +27,7 @@ const github = new GitHubApi({
 
 github.authenticate({
     type: 'oauth',
-    token: '32386291769872a18c145e04f6c2746f112e527b'
+    token: nconf.get('github:token')
 });
 
 function searchIssues(page = 1) {

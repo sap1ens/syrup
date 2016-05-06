@@ -1,0 +1,10 @@
+{
+    "github": {
+        "token": "YOUR_AUTH_TOKEN"
+    },
+    "project": {
+        "user": "GITHUB_USERNAME",
+        "teamLabel": "LABEL_FOR_YOUR_TEAM",
+        "sprintKeywords": "Sprint"
+    }
+}
