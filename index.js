@@ -57,7 +57,7 @@ function isBug(issue) {
 
 // TODO: improve, kinda hacky now
 function extractRepoNameFromURL(url) {
-    return url.replace('https://api.github.com/repos/BenchLabs/', '');
+    return url.replace(`https://api.github.com/repos/${user}/`, '');
 }
 
 function printSprint(title, issues) {
@@ -128,6 +128,7 @@ searchIssues().then((issuesData) => {
         delete allIssuesWithSprintsLabels['undefined'];
 
         console.log('\n');
+
         _.each(allIssuesWithSprintsLabels, (sprintIssues, sprintName) => {
             printSprint(sprintName, sprintIssues);
         });
