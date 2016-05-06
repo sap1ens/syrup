@@ -60,6 +60,16 @@ function extractRepoNameFromURL(url) {
     return url.replace(`https://api.github.com/repos/${user}/`, '');
 }
 
+function orderObject(unorderedObj) {
+    const ordered = {};
+
+    Object.keys(unorderedObj).sort().forEach(function(key) {
+      ordered[key] = unorderedObj[key];
+    });
+
+    return ordered;
+}
+
 function printSprint(title, issues) {
     console.log(title);
 
@@ -117,7 +127,7 @@ searchIssues().then((issuesData) => {
     fetchAllIssues(issuesData.items, issuesData.total_count).then((allIssuesWithTeamLabel) => {
         console.log(`Found ${allIssuesWithTeamLabel.length} issues with ${teamLabel} label`);
 
-        const allIssuesWithSprintsLabels = _.groupBy(allIssuesWithTeamLabel, (issue) => {
+        var allIssuesWithSprintsLabels = _.groupBy(allIssuesWithTeamLabel, (issue) => {
             const sprintLabel = _.find(issue.labels, (label) => {
                 return label.name.indexOf(sprintLabelKeywords) != -1;
             });
@@ -128,6 +138,8 @@ searchIssues().then((issuesData) => {
         delete allIssuesWithSprintsLabels['undefined'];
 
         console.log('\n');
+
+        allIssuesWithSprintsLabels = orderObject(allIssuesWithSprintsLabels);
 
         _.each(allIssuesWithSprintsLabels, (sprintIssues, sprintName) => {
             printSprint(sprintName, sprintIssues);
