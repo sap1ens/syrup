@@ -1,34 +1,7 @@
 import _ from 'underscore';
-import GitHubApi from 'github';
 import Table from 'cli-table';
-import nconf from 'nconf';
-
-nconf.env().argv();
-nconf.file('config.json');
-
-const possibleStoryPoints = [1, 2, 3, 4, 5];
-const user = nconf.get('project:user');
-const teamLabel = nconf.get('project:teamLabel');
-const sprintLabelKeywords = nconf.get('project:sprintKeywords');
-
-const github = new GitHubApi({
-    // required
-    version: '3.0.0',
-    // optional
-    debug: false,
-    protocol: 'https',
-    host: 'api.github.com', // should be api.github.com for GitHub
-    pathPrefix: '', // for some GHEs; none for GitHub
-    timeout: 5000,
-    headers: {
-        'user-agent': 'syrup-app' // GitHub is happy with a unique user agent
-    }
-});
-
-github.authenticate({
-    type: 'oauth',
-    token: nconf.get('github:token')
-});
+import github from './github';
+import {possibleStoryPoints, user, teamLabel, sprintLabelKeywords} from './config';
 
 function searchIssues(page = 1) {
     const query = `user:${user}+label:${teamLabel}`;
