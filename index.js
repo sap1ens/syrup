@@ -128,20 +128,30 @@ function fetchAllIssues(initialData = [], totalCount, startFrom = 2) {
     });
 }
 
+function isSprintLabel(labelName) {
+    return labelName.indexOf(sprintLabelKeywords) != -1;
+}
+
 
 searchIssues().then((issuesData) => {
     fetchAllIssues(issuesData.items, issuesData.total_count).then((allIssuesWithTeamLabel) => {
         console.log(`Found ${allIssuesWithTeamLabel.length} issues with ${teamLabel} label`);
 
-        var allIssuesWithSprintsLabels = _.groupBy(allIssuesWithTeamLabel, (issue) => {
-            const sprintLabel = _.find(issue.labels, (label) => {
-                return label.name.indexOf(sprintLabelKeywords) != -1;
+        var allIssuesWithSprintsLabels = {};
+
+        _.each(allIssuesWithTeamLabel, (issue) => {
+            _.each(issue.labels, (label) => {
+                var name = label.name;
+
+                 if(isSprintLabel(name)) {
+                     if(_.isUndefined(allIssuesWithSprintsLabels[name])) {
+                         allIssuesWithSprintsLabels[name] = [];
+                     }
+
+                     allIssuesWithSprintsLabels[name].push(issue);
+                 }
             });
-
-            return sprintLabel && sprintLabel.name;
         });
-
-        delete allIssuesWithSprintsLabels['undefined'];
 
         console.log('\n');
 
