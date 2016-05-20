@@ -78,8 +78,8 @@ function printSprint(title, issues) {
         colWidths: [10, 20, 100, 10, 25, 10]
     });
 
-    var totalStoryPoints = 0;
-    var assignees = new Set();
+    let totalStoryPoints = 0;
+    const assignees = new Set();
 
     _.each(issues, (issue) => {
         const storyPoints = _.filter(_.compact(_.map(issue.labels, (label) => {
@@ -111,7 +111,7 @@ function printSprint(title, issues) {
 
 function fetchAllIssues(initialData = [], totalCount, startFrom = 2) {
     return new Promise((resolve, reject) => {
-        var allIssuesWithLabel = initialData;
+        let allIssuesWithLabel = initialData;
 
         function fetchAll(page) {
             if(allIssuesWithLabel.length < totalCount) {
@@ -137,11 +137,11 @@ searchIssues().then((issuesData) => {
     fetchAllIssues(issuesData.items, issuesData.total_count).then((allIssuesWithTeamLabel) => {
         console.log(`Found ${allIssuesWithTeamLabel.length} issues with ${teamLabel} label`);
 
-        var allIssuesWithSprintsLabels = {};
+        let allIssuesWithSprintsLabels = {};
 
         _.each(allIssuesWithTeamLabel, (issue) => {
             _.each(issue.labels, (label) => {
-                var name = label.name;
+                const name = label.name;
 
                  if(isSprintLabel(name)) {
                      if(_.isUndefined(allIssuesWithSprintsLabels[name])) {
