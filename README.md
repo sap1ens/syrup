@@ -50,4 +50,5 @@ npm start
 ## TODO
 
 - Create a way to enable this workflow for a list of repos (create all required labels)
-- Create a way to start a new Sprint (again, by creating a new label in required projects)
+- Document app structure
+- Document new Sprint command
