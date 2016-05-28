@@ -5,6 +5,8 @@
     "project": {
         "user": "GITHUB_USERNAME",
         "teamLabel": "LABEL_FOR_YOUR_TEAM",
-        "sprintKeywords": "Sprint"
+        "sprintKeywords": "Sprint",
+        "sprintLabelColor": "fbca04",
+        "teamRepos": []
     }
 }

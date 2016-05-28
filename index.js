@@ -1,4 +1,5 @@
 import sprints from './features/list-sprints';
+import newSprint from './features/new-sprint';
 import parseArgs from 'minimist';
 
 const argv = parseArgs(process.argv.slice(2));
@@ -8,9 +9,8 @@ switch(argv.c) {
         sprints();
         break;
     case 'new-sprint':
-        // TODO
-        const name = argv.n;
-        console.log('Implement new-sprint: ' + name);
+        const nameSuffix = argv.n;
+        newSprint(nameSuffix);
         break;
     case 'help':
     default:
