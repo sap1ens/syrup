@@ -44,7 +44,7 @@ All these options can be passed as arguments or environment variables.
 ## Usage
 
 ```
-npm start
+npm run list-sprints
 ```
 
 ## TODO
