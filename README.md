@@ -50,5 +50,5 @@ npm run list-sprints
 ## TODO
 
 - Create a way to enable this workflow for a list of repos (create all required labels)
+- Document new commands, more examples / screenshots
 - Document app structure
-- Document new Sprint command
