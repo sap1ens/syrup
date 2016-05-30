@@ -6,8 +6,6 @@ import {possibleStoryPoints, user, teamLabel, sprintLabelKeywords} from '../conf
 function searchIssues(page = 1) {
     const query = `user:${user}+label:${teamLabel}`;
 
-    console.log(`Using search query: "${query}", fetching page ${page}`);
-
     return new Promise((resolve, reject) => {
         github.search.issues({
             q: query,
