@@ -1,15 +1,20 @@
 # syrup for your waffles
 
-Little helper for [Waffle.io](https://waffle.io) based Scrum workflows. Shows Sprint information, currently only supports CLI mode.
+Little helper for [Waffle.io](https://waffle.io) based Scrum workflows, currently only supports CLI mode.
+
+Features:
+- List all Sprints with associated issues and details
+- Create new Sprint
+- Clone issue (if you decide to move it to the next Sprint)
 
 ![](https://db.tt/bxxiKMdK)
 
 ## Workflow
 
 [Waffle.io](https://waffle.io) is an amazing project management tool based on GitHub. It has two-way synchronization with GitHub and shows
-your repos as Kanban boards.
+your issues for a repo as a Kanban board.
 
-It's a bit tricky to use Waffle for Sprints when you connect multiple repos to one board (but this is something you'll end up doing anyway). We developed a set of rules to follow that enables this app to show the Sprint information we need.
+It's a bit tricky to use Waffle for Sprints when you connect multiple repos to one board (but this is something you'll end up doing anyway). We developed a set of rules to follow, which enables this app to show the Sprint information we need.
 
 ### Points
 
@@ -29,7 +34,6 @@ But again, you can solve this problem with labels. Have a format like this: `[TE
 
 ```
 npm install
-npm install -g babel-cli
 ```
 
 Create `config.json` file using `config.json.example`. You need to configure the following options:
@@ -38,17 +42,27 @@ Create `config.json` file using `config.json.example`. You need to configure the
 - `project:user` GitHub user or organization to use for search
 - `project:teamLabel` GitHub label for your team. Should be the same for all repos
 - `project:sprintKeywords` Keywords for the GitHub label to mark Sprints. Check Workflow section for more info
+- `project:sprintLabelColor` Color of the Sprint label, hex code without `#`
+- `project:teamRepos` Array of repos names for your team (connected repos in the Waffle source settings), without organization/user. For example, specify `syrup` for `https://github.com/sap1ens/syrup` repo.
 
 All these options can be passed as arguments or environment variables.
 
 ## Usage
 
-```
-npm run list-sprints
-```
+> npm run list-sprints
+
+List all existing Sprints.
+
+> npm run new-sprint -- --id $SPRINT_ID
+
+Create new Sprint using unique SPRINT_ID, it'll be used for sorting (so simple incremental number should be fine).
+
+> npm run clone-issue -- --repo REPO_NAME --id ISSUE_ID
+
+Clone issue using provided repo name and issue ID.
+
+> npm run help
 
 ## TODO
 
 - Create a way to enable this workflow for a list of repos (create all required labels)
-- Document new commands, more examples / screenshots
-- Document app structure

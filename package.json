@@ -4,10 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "list-sprints": "babel-node index.js --command list-sprints",
-    "new-sprint": "babel-node index.js --command new-sprint",
-    "clone-issue": "babel-node index.js --command clone-issue",
-    "help": "babel-node index.js",
+    "list-sprints": "node_modules/babel-cli/bin/babel-node.js index.js --command list-sprints",
+    "new-sprint": "node_modules/babel-cli/bin/babel-node.js index.js --command new-sprint",
+    "clone-issue": "node_modules/babel-cli/bin/babel-node.js index.js --command clone-issue",
+    "help": "node_modules/babel-cli/bin/babel-node.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
