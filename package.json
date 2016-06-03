@@ -1,7 +1,7 @@
 {
-  "name": "syrup",
+  "name": "add-syrup",
   "version": "0.2.0",
-  "description": "",
+  "description": "syrup for your waffles",
   "main": "index.js",
   "scripts": {
     "list-sprints": "node_modules/babel-cli/bin/babel-node.js index.js --command list-sprints",
@@ -10,7 +10,7 @@
     "help": "node_modules/babel-cli/bin/babel-node.js index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "",
+  "author": "sap1ens",
   "license": "MIT",
   "dependencies": {
     "babel-cli": "^6.6.5",
