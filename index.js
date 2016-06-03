@@ -22,7 +22,7 @@ switch(argv.command) {
     default:
         console.log(`Choose the following commands:
             npm run list-sprints - list all existing Sprints
-            npm run new-sprint -- --id SPRINT_ID - create new Sprint using unique SPRINT_ID
-            npm run clone-issue -- --repo REPO_NAME --id ISSUE_ID - clone issue using provided repo and issue ID
+            npm run new-sprint -- --id $SPRINT_ID - create new Sprint using unique SPRINT_ID
+            npm run clone-issue -- --repo $REPO_NAME --id $ISSUE_ID - clone issue using provided repo and issue ID
             npm run help`);
 }
