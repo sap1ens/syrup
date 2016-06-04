@@ -65,4 +65,5 @@ Clone issue using provided repo name and issue ID.
 
 ## TODO
 
+- Installation as a global package (bin file + config detection in the root folder)
 - Create a way to enable this workflow for a list of repos (create all required labels)
