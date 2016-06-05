@@ -5,7 +5,7 @@
 
     "description": "Scrum workflow CLI for Waffle.io",
 
-    "main": "index.js",
+    "main": "./src/syrup.js",
 
     "repository": {
         "type": "git",
@@ -17,10 +17,10 @@
     },
 
     "scripts": {
-        "list-sprints": "node_modules/babel-cli/bin/babel-node.js index.js --command list-sprints",
-        "new-sprint": "node_modules/babel-cli/bin/babel-node.js index.js --command new-sprint",
-        "clone-issue": "node_modules/babel-cli/bin/babel-node.js index.js --command clone-issue",
-        "help": "node_modules/babel-cli/bin/babel-node.js index.js",
+        "list-sprints": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command list-sprints",
+        "new-sprint": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command new-sprint",
+        "clone-issue": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command clone-issue",
+        "help": "node_modules/babel-cli/bin/babel-node.js src/syrup.js",
         "test": "echo \"Error: no test specified\" && exit 1"
     },
 
