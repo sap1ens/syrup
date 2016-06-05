@@ -36,7 +36,7 @@ But again, you can solve this problem with labels. Have a format like this: `[TE
 npm install
 ```
 
-Create `config.json` file using `config.json.example`. You need to configure the following options:
+Then create `~/.syrup/config.json` file using `config.json.example`. You need to configure the following options:
 
 - `github:token` your GitHub token
 - `project:user` GitHub user or organization to use for search

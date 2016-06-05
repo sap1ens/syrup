@@ -1,7 +1,8 @@
 import nconf from 'nconf';
+import os from 'os';
 
 nconf.env().argv();
-nconf.file('config.json');
+nconf.file(os.homedir() + '/.syrup/config.json');
 
 export const possibleStoryPoints = [1, 2, 3, 4, 5];
 export const user = nconf.get('project:user');
