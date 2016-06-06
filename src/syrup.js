@@ -1,28 +1,37 @@
 import sprints from './features/list-sprints';
 import newSprint from './features/new-sprint';
 import cloneIssue from './features/clone-issue';
-import yargsParser from 'yargs-parser';
+import program from 'commander';
 
-const argv = yargsParser(process.argv.slice(2));
-
-switch(argv.command) {
-    case 'list-sprints':
+program
+    .command('list-sprints')
+    .description('list all existing Sprints')
+    .action(() => {
         sprints();
-        break;
-    case 'new-sprint':
-        const nameSuffix = argv.id;
-        newSprint(nameSuffix);
-        break;
-    case 'clone-issue':
-        const repo = argv.repo;
-        const issueId = argv.id;
-        cloneIssue(repo, issueId);
-        break;
-    case 'help':
-    default:
-        console.log(`Choose the following commands:
-            npm run list-sprints - list all existing Sprints
-            npm run new-sprint -- --id $SPRINT_ID - create new Sprint using unique SPRINT_ID
-            npm run clone-issue -- --repo $REPO_NAME --id $ISSUE_ID - clone issue using provided repo and issue ID
-            npm run help`);
-}
+    });
+
+program
+    .command('new-sprint')
+    .description('create new Sprint using unique sprint_id')
+    .option('-i, --id', 'sprint ID')
+    .action((id) => {
+        newSprint(id);
+    });
+
+program
+    .command('clone-issue')
+    .description('clone issue using provided repo and issue ID')
+    .option('-i, --id', 'issue ID')
+    .option('-r, --repo', 'repository name')
+    .action((id, repo) => {
+        cloneIssue(repo, id);
+    });
+
+// kinda hacky, but there is no other way to replace the whole thing
+program.helpInformation = () => {
+    return 'TODO';
+};
+
+program.parse(process.argv);
+
+if (!program.args.length) program.help();
