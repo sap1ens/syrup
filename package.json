@@ -17,10 +17,6 @@
     "build": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "prepublish": "node_modules/babel-cli/bin/babel.js src --out-dir lib",
     "start": "node_modules/babel-cli/bin/babel-node.js src/syrup.js",
-    "list-sprints": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command list-sprints",
-    "new-sprint": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command new-sprint",
-    "clone-issue": "node_modules/babel-cli/bin/babel-node.js src/syrup.js --command clone-issue",
-    "help": "node_modules/babel-cli/bin/babel-node.js src/syrup.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "babel": {
