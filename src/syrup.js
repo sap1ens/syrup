@@ -29,9 +29,31 @@ program
 
 // kinda hacky, but there is no other way to replace the whole thing
 program.helpInformation = () => {
-    return 'TODO';
+    return `
+    Usage: syrup command [options]
+     
+    Commands:
+     
+      list-sprints
+        [no options] 
+      
+      new-sprint
+        -i, --id       sprint id
+    
+      clone-issue
+        -i, --id       issue id
+        -r, --repo     repo name
+     
+    Examples:
+     
+      $ syrup list-sprints
+      $ syrup new-sprint --id 20
+      $ syrup clone-issue --id 123 --repo ops
+      
+    `;
 };
 
 program.parse(process.argv);
 
-if (!program.args.length) program.help();
+// another little hack, sorry
+if (program.rawArgs.length <= 2) program.help();
