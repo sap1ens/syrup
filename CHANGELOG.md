@@ -1,3 +1,7 @@
+## 0.8.0 (2016-06-09)
+
+Now shipped as a global executable.
+
 ## 0.2.0 (2016-06-03)
 
 Added new features: creating new Sprints and tasks cloning.

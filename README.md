@@ -33,7 +33,7 @@ But again, you can solve this problem with labels. Have a format like this: `[TE
 ## Installation
 
 ```
-npm install
+npm install -g syrup-cli
 ```
 
 Then create `~/.syrup/config.json` file using `config.json.example`. You need to configure the following options:
@@ -49,19 +49,21 @@ All these options can be passed as arguments or environment variables.
 
 ## Usage
 
-> npm run list-sprints
+> syrup list-sprints
 
 List all existing Sprints.
 
-> npm run new-sprint -- --id $SPRINT_ID
+> syrup new-sprint -- --id SPRINT_ID
 
 Create new Sprint using unique SPRINT_ID, it'll be used for sorting (so simple incremental number should be fine).
 
-> npm run clone-issue -- --repo REPO_NAME --id ISSUE_ID
+> syrup clone-issue -- --repo REPO_NAME --id ISSUE_ID
 
 Clone issue using provided repo name and issue ID.
 
-> npm run help
+> syrup -h
+
+Help page.
 
 ## TODO
 
