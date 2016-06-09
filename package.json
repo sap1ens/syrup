@@ -1,10 +1,10 @@
 {
   "name": "syrup-cli",
-  "version": "0.8.0",
+  "version": "0.8.1",
   "description": "Scrum workflow CLI for Waffle.io",
   "main": "./lib/syrup.js",
   "bin": {
-    "syrup": "./bin/syrup"
+    "syrup": "bin/syrup.js"
   },
   "repository": {
     "type": "git",
