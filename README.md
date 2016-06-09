@@ -18,7 +18,7 @@ It's a bit tricky to use Waffle for Sprints when you connect multiple repos to o
 
 ### Points
 
-Waffle has its own system for points, but it's a bit weird (points like 1, 3, 5, 8, 13...), it doesn't sync with GitHub and all points basically disappear when issue is archived. So instead, every project that participates in a Sprint **must contain** these 5 labels for story points: "1", "2", "3", "4", "5".
+Waffle has its own system for points, but it's a bit weird (points like `1`, `3`, `5`, `8`, `13`...), it doesn't sync with GitHub and all points basically disappear when issue is archived. So instead, every project that participates in a Sprint **must contain** these 5 labels for story points: `1`, `2`, `3`, `4`, `5`.
 
 ### Teams
 
