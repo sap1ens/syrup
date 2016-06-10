@@ -1,3 +1,7 @@
+## 0.9.0 (2016-06-09)
+
+Added new `setup` command.
+
 ## 0.8.0 (2016-06-09)
 
 Now shipped as a global executable.
