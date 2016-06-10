@@ -49,6 +49,10 @@ All these options can be passed as arguments or environment variables.
 
 ## Usage
 
+> syrup setup
+
+Setup all team repos, create all required labels.
+
 > syrup list-sprints
 
 List all existing Sprints.
@@ -67,4 +71,6 @@ Help page.
 
 ## TODO
 
-- Create a way to enable this workflow for a list of repos (create all required labels)
+- Make all label colors to be configurable
+- Error handling
+- Tests

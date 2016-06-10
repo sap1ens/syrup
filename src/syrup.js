@@ -1,6 +1,7 @@
 import sprints from './features/list-sprints';
 import newSprint from './features/new-sprint';
 import cloneIssue from './features/clone-issue';
+import setup from './features/setup';
 import program from 'commander';
 
 program
@@ -27,6 +28,13 @@ program
         cloneIssue(repo, id);
     });
 
+program
+    .command('setup')
+    .description('setup all team repos with required labels')
+    .action(() => {
+        setup();
+    });
+
 // kinda hacky, but there is no other way to replace the whole thing
 program.helpInformation = () => {
     return `
@@ -44,6 +52,9 @@ program.helpInformation = () => {
         -i, --id       issue id
         -r, --repo     repo name
      
+      setup  
+        [no options]
+        
     Examples:
      
       $ syrup list-sprints
