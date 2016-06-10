@@ -69,6 +69,12 @@ Clone issue using provided repo name and issue ID.
 
 Help page.
 
+## Development
+
+You can use this command for iterating:
+
+> npm run start [COMMAND] [OPTIONS]
+
 ## TODO
 
 - Make all label colors to be configurable
