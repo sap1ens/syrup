@@ -10,5 +10,7 @@ export const teamLabel = nconf.get('project:teamLabel');
 export const sprintLabelKeywords = nconf.get('project:sprintKeywords');
 export const sprintLabelColor = nconf.get('project:sprintLabelColor');
 export const teamRepos = nconf.get('project:teamRepos');
+export const possibleStoryPointsColor = 'bfe5bf';
+export const teamLabelColor = '098B8C';
 
 export const config = nconf;
