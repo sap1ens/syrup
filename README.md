@@ -18,11 +18,11 @@ It's a bit tricky to use Waffle for Sprints when you connect multiple repos to o
 
 ### Points
 
-Waffle has its own system for points, but it's a bit weird (points like `1`, `3`, `5`, `8`, `13`...), it doesn't sync with GitHub and all points basically disappear when issue is archived. So instead, every project that participates in a Sprint **must contain** these 5 labels for story points: `1`, `2`, `3`, `4`, `5`.
+Waffle has its own system for points, but it's a bit weird (points like `1`, `3`, `5`, `8`, `13`...), it doesn't sync with GitHub and all points basically disappear when issue is archived. So instead, every project that participates in a Sprint **must contain** these 5 labels for story points: `1`, `2`, `3`, `4`, `5`. You can create these labels automatically for all repos using `setup` command, check **Usage** section.
 
 ### Teams
 
-Multiple teams can work on the same repo. You **must tag** issues with a label that identifies your team. This label must be the same for all projects you track. You can define it using `project:teamLabel` config option.
+Multiple teams can work on the same repo. You **must tag** issues with a label that identifies your team. This label must be the same for all projects you track. You can define it using `project:teamLabel` config option. You can create this label automatically for all repos using `setup` command, check **Usage** section.
 
 ### Sprints
 
@@ -38,7 +38,7 @@ npm install -g syrup-cli
 
 Then create `~/.syrup/config.json` file using `config.json.example`. You need to configure the following options:
 
-- `github:token` your GitHub token
+- `github:token` your GitHub token. You can use [this page](https://help.github.com/articles/creating-an-access-token-for-command-line-use/) if you don't know how to do it
 - `project:user` GitHub user or organization to use for search
 - `project:teamLabel` GitHub label for your team. Should be the same for all repos
 - `project:sprintKeywords` Keywords for the GitHub label to mark Sprints. Check Workflow section for more info
@@ -46,6 +46,8 @@ Then create `~/.syrup/config.json` file using `config.json.example`. You need to
 - `project:teamRepos` Array of repos names for your team (connected repos in the Waffle source settings), without organization/user. For example, specify `syrup` for `https://github.com/sap1ens/syrup` repo.
 
 All these options can be passed as arguments or environment variables.
+
+Here's an example of the real config I use: https://gist.github.com/sap1ens/4abf84d0726fd7abe5a5f07b17e00dc0.
 
 ## Usage
 
