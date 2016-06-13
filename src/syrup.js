@@ -29,9 +29,9 @@ program
 program
     .command('clone-issue')
     .description('clone issue using provided repo and issue ID')
-    .option('-i, --id', 'issue ID')
     .option('-r, --repo', 'repository name')
-    .action((id, repo) => {
+    .option('-i, --id', 'issue ID')
+    .action((repo, id) => {
         cloneIssue(repo, id);
     });
 
@@ -52,8 +52,8 @@ program.helpInformation = () => {
         [no options] 
     
       clone-issue    clone issue using provided repo and issue ID
-        -i, --id       issue id
         -r, --repo     repo name
+        -i, --id       issue id        
      
     Examples:
      
