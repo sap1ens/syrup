@@ -1,6 +1,6 @@
 # syrup for your waffles
 
-Little helper for [Waffle.io](https://waffle.io) based Scrum workflows, currently only supports CLI mode.
+Little helper for [Waffle.io](https://waffle.io) based Scrum workflows, can also work with [ZenHub](https://www.zenhub.com) or just plain GitHub. Currently only supports CLI mode.
 
 Features:
 - List all Sprints with associated issues and details
@@ -9,7 +9,7 @@ Features:
 
 ![](https://db.tt/bxxiKMdK)
 
-## Workflow
+## Waffle.io Workflow
 
 [Waffle.io](https://waffle.io) is an amazing project management tool based on GitHub. It has two-way synchronization with GitHub and shows
 your issues for a repo as a Kanban board.
