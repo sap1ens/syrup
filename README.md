@@ -4,10 +4,18 @@ Little helper for [Waffle.io](https://waffle.io) based Scrum workflows, can also
 
 Features:
 - List all Sprints with associated issues and details
-- Create new Sprint
+- Create new Sprint (using labels or milestones)
 - Clone issue (if you decide to move it to the next Sprint)
 
 ![](https://db.tt/bxxiKMdK)
+
+## Workflows
+
+You can use plan GitHub or Waffle.io - in this case your workflow should be similar to what's covered in the **Waffle.io Workflow** section.
+
+If you use ZenHub you probably already have everything you need, but this app still can help you with milestones, check **ZenHub Workflow** section.
+
+Also, in both cases `clone-issue` command can be helpful for moving tickets between Sprints.
 
 ## Waffle.io Workflow
 
@@ -29,6 +37,12 @@ Multiple teams can work on the same repo. You **must tag** issues with a label t
 Unfortunately you can't really use milestones when you have multiple repos for the same Sprint. Also, sometimes you have to move ticket to the next Sprint, in this case you can't keep the information that ticket was initially assigned to previous Sprint.
 
 But again, you can solve this problem with labels. Have a format like this: `[TEAM_NAME] Sprint [SPRINT_COUNTER]`, for example `Platform Sprint 10`. You can define the initial part with `project:sprintKeywords` config option, for example `Platform Sprint`.
+
+## ZenHub Workflow
+
+[ZenHub](https://www.zenhub.com) has almost everything that's covered here, except one thing - when you create a new Sprint you have to do it through milestones. If you have a board with multiple connected repos you'll have to create milestone manually for each one.
+
+You can use `new-milestone` command to do it for you, it'll automatically create the same milestone (using title and due date) for all repos, so ZenHub can merge them and use as a single Sprint.
 
 ## Installation
 
@@ -62,6 +76,10 @@ List all existing Sprints.
 > syrup new-sprint -- --id SPRINT_ID
 
 Create new Sprint using unique SPRINT_ID, it'll be used for sorting (so simple incremental number should be fine).
+
+> syrup new-milestone --title 'MILESTONE_TITLE' --date 'DUE_DATE'
+
+Create new milestone in every connected repo using title and due date (YYYY-MM-DD format).
 
 > syrup clone-issue -- --repo REPO_NAME --id ISSUE_ID
 
