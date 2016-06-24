@@ -11,7 +11,7 @@ Features:
 
 ## Workflows
 
-You can use plan GitHub or Waffle.io - in this case your workflow should be similar to what's covered in the **Waffle.io Workflow** section.
+You can use plain GitHub or Waffle.io - in this case your workflow should be similar to what's covered in the **Waffle.io Workflow** section.
 
 If you use ZenHub you probably already have everything you need, but this app still can help you with milestones, check **ZenHub Workflow** section.
 
