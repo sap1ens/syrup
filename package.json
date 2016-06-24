@@ -1,7 +1,7 @@
 {
   "name": "syrup-cli",
-  "version": "0.9.1",
-  "description": "Scrum workflow CLI for Waffle.io",
+  "version": "0.9.2",
+  "description": "Scrum workflow CLI for Waffle.io. Can be used with ZenHub or plain GitHub.",
   "main": "./lib/syrup.js",
   "bin": {
     "syrup": "bin/syrup.js"

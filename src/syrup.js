@@ -1,5 +1,6 @@
 import sprints from './features/list-sprints';
 import newSprint from './features/new-sprint';
+import newMilestone from './features/new-milestone';
 import cloneIssue from './features/clone-issue';
 import setup from './features/setup';
 import program from 'commander';
@@ -17,6 +18,15 @@ program
     .option('-i, --id', 'sprint ID')
     .action((id) => {
         newSprint(id);
+    });
+
+program
+    .command('new-milestone')
+    .description('create new milestone in all repos using title and due date')
+    .option('-t, --title', 'milestone title')
+    .option('-d, --date', 'due date, YYYY-MM-DD format')
+    .action((title, date) => {
+        newMilestone(title, date);
     });
 
 program
@@ -48,6 +58,10 @@ program.helpInformation = () => {
       new-sprint     create new Sprint using unique sprint ID
         -i, --id       sprint id     
      
+      new-milestone  create new milestone in all repos using title and due date (YYYY-MM-DD format)
+        -t, --title    milestone title
+        -d, --date     due date, YYYY-MM-DD format        
+     
       list-sprints   list all existing Sprints
         [no options] 
     
@@ -59,6 +73,7 @@ program.helpInformation = () => {
      
       $ syrup setup
       $ syrup new-sprint --id 20
+      $ syrup new-milestone --title 'new sprint' --date '2016-11-04'
       $ syrup list-sprints      
       $ syrup clone-issue --id 123 --repo ops
       
