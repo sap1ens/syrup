@@ -1,6 +1,6 @@
 # syrup for your waffles
 
-Little helper for [Waffle.io](https://waffle.io) based Scrum workflows, can also work with [ZenHub](https://www.zenhub.com) or just plain GitHub. Currently only supports CLI mode.
+Scrum workflow CLI for GitHub with or without [Waffle.io](https://waffle.io). Can be also used with [ZenHub](https://www.zenhub.com). Currently only supports CLI mode.
 
 Features:
 - List all Sprints with associated issues and details
@@ -11,13 +11,13 @@ Features:
 
 ## Workflows
 
-You can use plain GitHub or Waffle.io - in this case your workflow should be similar to what's covered in the **Waffle.io Workflow** section.
+You can use GitHub with or without Waffle.io - in this case your workflow should be similar to what's covered in the **GitHub & Waffle.io Workflows** section.
 
 If you use ZenHub you probably already have everything you need, but this app still can help you with milestones, check **ZenHub Workflow** section.
 
 Also, in both cases `clone-issue` command can be helpful for moving tickets between Sprints.
 
-## Waffle.io Workflow
+## GitHub & Waffle.io Workflows
 
 [Waffle.io](https://waffle.io) is an amazing project management tool based on GitHub. It has two-way synchronization with GitHub and shows
 your issues for a repo as a Kanban board.
@@ -97,6 +97,7 @@ You can use this command for iterating:
 
 ## TODO
 
+- Current Sprint view
 - Make all label colors to be configurable
 - Error handling
 - Tests
