@@ -1,3 +1,7 @@
+## 0.9.2 (2016-06-24)
+
+Added some features for ZenHub!
+
 ## 0.9.0 (2016-06-09)
 
 Added new `setup` command.

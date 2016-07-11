@@ -1,6 +1,6 @@
 # syrup for your waffles
 
-Scrum workflow CLI for GitHub with or without [Waffle.io](https://waffle.io). Can be also used with [ZenHub](https://www.zenhub.com). Currently only supports CLI mode.
+Scrum workflow CLI for GitHub with or without [Waffle.io](https://waffle.io). Can also be used with [ZenHub](https://www.zenhub.com). Currently only supports CLI mode.
 
 Features:
 - List all Sprints with associated issues and details
