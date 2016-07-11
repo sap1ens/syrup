@@ -97,7 +97,6 @@ You can use this command for iterating:
 
 ## TODO
 
-- Current Sprint view
 - Make all label colors to be configurable
 - Error handling
 - Tests
