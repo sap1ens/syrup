@@ -1,6 +1,7 @@
 import sprints from './features/list-sprints';
 import newSprint from './features/new-sprint';
 import newMilestone from './features/new-milestone';
+import updateMilestone from './features/update-milestone';
 import cloneIssue from './features/clone-issue';
 import setup from './features/setup';
 import program from 'commander';
@@ -27,6 +28,15 @@ program
     .option('-d, --date', 'due date, YYYY-MM-DD format')
     .action((title, date) => {
         newMilestone(title, date);
+    });
+
+program
+    .command('update-milestone')
+    .description('update milestone due date by title')
+    .option('-t, --title', 'milestone title')
+    .option('-d, --date', 'due date, YYYY-MM-DD format')
+    .action((title, date) => {
+        updateMilestone(title, date);
     });
 
 program
